@@ -24,3 +24,5 @@ lblTitle.pack()
 mainFrame = Frame(root, bg = '#588157', bd = 5, relief = RAISED, width = 500,
                   height = 450)
 mainFrame.pack(side = TOP)
+
+root.mainloop()
