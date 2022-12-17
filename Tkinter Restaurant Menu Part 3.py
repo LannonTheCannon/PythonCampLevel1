@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import *
 
+def getApp1():
+    pass 
+
 # main window
 root = tk.Tk()
 root.geometry('1000x500')
