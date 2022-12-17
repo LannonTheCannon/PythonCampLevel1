@@ -3,6 +3,7 @@ from tkinter import *
 from tkmacosx import Button
 
 class RestaurantMenu:
+
     def __init__(self):
         self.frames = []
         self.labels = []
@@ -71,7 +72,7 @@ class RestaurantMenu:
         botFrame.pack()
         self.frames.append(botFrame)
 
-        self.lbBox = tools.createListBox(botFrame, 70, 15, 'raised', 5, 'arial 12')
+        self.lbBox = tools.createListBox(botFrame, 60, 15, 'raised', 5, 'arial 12')
         self.lbBox.pack(side = LEFT)
 
         #########################################
@@ -128,9 +129,7 @@ class RestaurantMenu:
             subtotal += price
 
         print(subtotal)
-
-        # Find the sales tax
-        TAX_RATE = 0.08
+        TAX_RATE = 0.0725
         sales_tax = TAX_RATE * subtotal
         grand_total = sales_tax + subtotal
 

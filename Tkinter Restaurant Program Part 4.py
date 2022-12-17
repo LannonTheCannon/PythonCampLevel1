@@ -2,15 +2,31 @@ import tkinter as tk
 from tkinter import *
 
 def getApp1():
-    pass 
-
-def getApp1():
     # contain the information based on appetizer #001
     appItem1 = 'Galaxy Fries'
     appItem1Price = 5.99
     appItem1Data = [appItem1, appItem1Price]
 
-    print(appItem1, appItem1Price)
+    message = appItem1Data[0] + ('.' * 12) + '$' + str(appItem1Data[1])
+    #print(appItem1, appItem1Price)
+    lbCart.insert(END, message)
+
+def deleteItem():
+    selected_item = lbCart.curselection()
+    lbCart.delete(selected_item)
+
+def createReceipt():
+    # We need to grab everything from our list box
+    items = lbCart.get(0, END)
+
+    # for loop
+    for item in items:
+        # Examine each item in the list
+        # Find its price point
+        price_point = item.find('$')
+        item_price = item[price_point:]
+        item_price = item_price.strip('$')
+        item_price = float(item_price)
 
 # main window
 root = tk.Tk()
@@ -45,12 +61,23 @@ itemCart = Frame(receiptFrame, bg = 'grey40', bd = 5, relief = SUNKEN, width = 5
 itemCart.propagate(0)
 itemCart.pack(side = LEFT)
 
-lbCart = Listbox(itemCart, width = 80, height = 15)
+lbCart = Listbox(itemCart, width = 80, height = 10, font = 'arial 16')
 lbCart.pack()
 
 finalOrder = Frame(receiptFrame, bg = 'grey40', bd = 5, relief = SUNKEN, width = 500,
                  height = 200)
 finalOrder.pack(side = RIGHT)
+
+# Add Two buttons to the program
+# Delete the item that we no longer want
+btnDelete = Button(itemCart, bg = 'red', fg = 'cornsilk', width = 8, height = 1,
+                   text = 'Delete', font = 'consolas 15 bold', command = deleteItem)
+btnDelete.place(x = 389, y = 0)
+
+btnPurchase = Button(itemCart, bg = 'red', fg = 'cornsilk', width = 8, height = 1,
+                   text = 'Purchase', font = 'consolas 15 bold', justify = LEFT,
+                     command = createReceipt)
+btnPurchase.place(x = 389, y = 127)
 
 ##############################################################################
 
